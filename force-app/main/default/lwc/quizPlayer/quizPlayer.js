@@ -13,12 +13,15 @@ export default class QuizPlayer extends LightningElement {
     quizOptions = [];
     selectedQuizId;
     isLoaded = false;
+    randomizeQuestions = false;
     error;
 
     @wire(getQuestions, { quizId: '$quizId' })
     wiredQuestions({ error, data }) {
         if (data) {
-            this.questions = data;
+            const shuffled = [...data];
+            if (this.randomizeQuestions) {this.shuffle(shuffled);}
+            this.questions = shuffled;
             this.isLoaded = true;
         } else if (error) {
             this.error = error;
@@ -122,6 +125,10 @@ export default class QuizPlayer extends LightningElement {
         }
     }
 
+    handleRandomizeToggle(event) {
+        this.randomizeQuestions = event.target.checked;
+    }
+
     startQuiz() {
         this.quizId = this.selectedQuizId;
     }
@@ -144,5 +151,12 @@ export default class QuizPlayer extends LightningElement {
         this.selectedAnswers = [];
         this.submitted = false;
         this.currentIndex++;
+    }
+
+    shuffle(questions) {
+        for (let i = questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [questions[i], questions[j]] = [questions[j], questions[i]];
+        }
     }
 }

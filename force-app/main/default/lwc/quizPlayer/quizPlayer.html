@@ -1,68 +1,86 @@
 <template>
     <lightning-card title={selectedLabel} class="slds-p-around_medium">
-        <template if:false={isLoaded}>
-            <lightning-combobox label="Select Quiz" value={selectedQuizId} options={quizOptions} onchange={handleQuizChange} placeholder="Select Quiz to start"></lightning-combobox>
-            <template if:true={showStartButton}>
-                <lightning-button label="Start Quiz" onclick={startQuiz} class="slds-m-top_medium"></lightning-button>
-            </template>
-        </template>
-        <template if:true={isLoaded}>
-            <template if:true={currentQuestion}>
-                <div class="slds-m-bottom_medium">
-                    <lightning-formatted-rich-text value={currentQuestion.Question_Text__c}></lightning-formatted-rich-text>
-                </div>
-
-                <template if:true={isMultipleChoice}>
-                    <div class="options-container">
-                        <template for:each={optionsWithStatus} for:item="option">
-                            <div key={option.key} class={option.class}>
-                                <lightning-input
-                                    type="checkbox"
-                                    label={option.label}
-                                    value={option.value}
-                                    onchange={handleSelection}>
-                                </lightning-input>
-                            </div>
-                        </template>
+        <div class="slds-var-m-around_medium">
+            <template if:false={isLoaded}>
+                <lightning-combobox label="Select Quiz" value={selectedQuizId} options={quizOptions} onchange={handleQuizChange} placeholder="Select Quiz to start"></lightning-combobox><br>
+                <template if:true={showStartButton}>
+                    <div class="slds-form-element">
+                        <label class="slds-checkbox_toggle slds-grid">
+                            <span class="slds-form-element__label slds-m-bottom_none">Randomize Questions?</span>
+                            <input type="checkbox"
+                                   onchange={handleRandomizeToggle}
+                                   checked={randomizeQuestions}
+                                   name="randomize-questions-toggle"
+                                   aria-describedby="randomize-questions-toggle" />
+                            <span id="randomize-questions-toggle" class="slds-checkbox_faux_container" aria-live="assertive">
+                                <span class="slds-checkbox_faux"></span>
+                                <span class="slds-checkbox_on">Enabled</span>
+                                <span class="slds-checkbox_off">Disabled</span>
+                            </span>
+                        </label>
                     </div>
-                </template>
-
-                <template if:false={isMultipleChoice}>
-                    <div class="options-container">
-                        <template for:each={optionsWithStatus} for:item="option">
-                            <div key={option.value} class={option.class}>
-                                <lightning-input
-                                    type="radio"
-                                    name="radioGroup"
-                                    label={option.label}
-                                    value={option.value}
-                                    onchange={handleSelection}>
-                                </lightning-input>
-                            </div>
-                        </template>
-                    </div>
-                </template>
-
-                <template if:true={showSubmitButton}>
-                    <lightning-button label="Submit Answer" onclick={submitAnswer} class="slds-m-top_medium"></lightning-button>
-                </template>
-
-                <template if:true={feedback}>
-                    <lightning-button label="Next Question" onclick={nextQuestion} class="slds-m-top_medium"></lightning-button>
-                    <div class="slds-m-top_medium slds-text-heading_small">
-                        {feedback}
-                    </div>
+                    <lightning-button label="Start Quiz" onclick={startQuiz} class="slds-m-top_medium"></lightning-button>
                 </template>
             </template>
-
-            <template if:false={currentQuestion}>
-                <div class="slds-text-heading_medium">Quiz Complete! 🎉</div>
-                <div class="slds-m-top_small">Your Score: {score} / {questions.length}</div>
+            <template if:true={isLoaded}>
+                <template if:true={currentQuestion}>
+                    <div class="slds-m-bottom_medium">
+                        <lightning-formatted-rich-text value={currentQuestion.Question_Text__c}></lightning-formatted-rich-text>
+                    </div>
+    
+                    <template if:true={isMultipleChoice}>
+                        <div class="options-container">
+                            <template for:each={optionsWithStatus} for:item="option">
+                                <div key={option.key} class={option.class}>
+                                    <lightning-input
+                                        type="checkbox"
+                                        label={option.label}
+                                        value={option.value}
+                                        onchange={handleSelection}>
+                                    </lightning-input>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+    
+                    <template if:false={isMultipleChoice}>
+                        <div class="options-container">
+                            <template for:each={optionsWithStatus} for:item="option">
+                                <div key={option.value} class={option.class}>
+                                    <lightning-input
+                                        type="radio"
+                                        name="radioGroup"
+                                        label={option.label}
+                                        value={option.value}
+                                        onchange={handleSelection}>
+                                    </lightning-input>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+    
+                    <template if:true={showSubmitButton}>
+                        <br><lightning-button label="Submit Answer" onclick={submitAnswer} class="slds-m-top_medium"></lightning-button><br>
+                    </template>
+    
+                    <template if:true={feedback}>
+                        <lightning-button label="Next Question" onclick={nextQuestion} class="slds-m-top_medium"></lightning-button>
+                        <div class="slds-m-top_medium slds-text-heading_small">
+                            {feedback}
+                        </div>
+                    </template>
+                </template>
+    
+                <template if:false={currentQuestion}>
+                    <div class="slds-text-heading_medium">Quiz Complete! 🎉</div>
+                    <div class="slds-m-top_small">Your Score: {score} / {questions.length}</div>
+                </template>
             </template>
-        </template>
-
-        <template if:true={error}>
-            <div class="slds-text-color_error">Error loading quiz questions.</div>
-        </template>
+    
+            <template if:true={error}>
+                <div class="slds-text-color_error">Error loading quiz questions.</div>
+            </template>
+        </div>
+        
     </lightning-card>
 </template>
