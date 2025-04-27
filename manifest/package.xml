@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Quiz__c</members>
+        <members>Quiz_Question__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Quiz__c-Quiz Layout</members>
+        <members>Quiz_Question__c-Quiz Question Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Quiz_Record_Page</members>
+        <members>Quiz_Question_Record_Page</members>
+        <members>Personal_UtilityBar</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Quiz__c</members>
+        <members>Quiz_Question__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Personal</members>
+        <name>CustomApplication</name>
+    </types>
+    <version>63.0</version>
+</Package>
