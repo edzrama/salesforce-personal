@@ -1,0 +1,20 @@
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option-item {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.correct-answer {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.wrong-answer {
+    background-color: #f8d7da;
+    color: #721c24;
+}
