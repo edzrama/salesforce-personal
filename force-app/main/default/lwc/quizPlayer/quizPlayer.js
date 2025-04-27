@@ -42,23 +42,28 @@ export default class QuizPlayer extends LightningElement {
         return this.selectedQuizId;
     }
 
+    get selectedLabel() {
+        const selected = this.quizOptions.find(opt => opt.value === this.selectedQuizId);
+        return this.isLoaded && selected ? selected.label : 'Quiz';
+    }
+
     get options() {
         if (!this.currentQuestion) return [];
         const opts = [];
         if (this.currentQuestion.Option_1__c) {
-            opts.push({ label: this.currentQuestion.Option_1__c, value: '1' , key: this.currentQuestion.Id + '1'});
+            opts.push({ label: this.currentQuestion.Option_1__c, value: '1' , key: this.currentQuestion.Id + '1', class: 'option-item'});
         }
         if (this.currentQuestion.Option_2__c) {
-            opts.push({ label: this.currentQuestion.Option_2__c, value: '2', key: this.currentQuestion.Id + '2' });
+            opts.push({ label: this.currentQuestion.Option_2__c, value: '2', key: this.currentQuestion.Id + '2', class: 'option-item' });
         }
         if (this.currentQuestion.Option_3__c) {
-            opts.push({ label: this.currentQuestion.Option_3__c, value: '3', key: this.currentQuestion.Id + '3'});
+            opts.push({ label: this.currentQuestion.Option_3__c, value: '3', key: this.currentQuestion.Id + '3', class: 'option-item'});
         }
         if (this.currentQuestion.Option_4__c) {
-            opts.push({ label: this.currentQuestion.Option_4__c, value: '4', key: this.currentQuestion.Id + '4'});
+            opts.push({ label: this.currentQuestion.Option_4__c, value: '4', key: this.currentQuestion.Id + '4', class: 'option-item'});
         }
         if (this.currentQuestion.Option_5__c) {
-            opts.push({ label: this.currentQuestion.Option_5__c, value: '5', key: this.currentQuestion.Id + '5'});
+            opts.push({ label: this.currentQuestion.Option_5__c, value: '5', key: this.currentQuestion.Id + '5', class: 'option-item'});
         }
         return opts;
     }

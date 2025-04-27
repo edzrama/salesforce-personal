@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Mini Quiz" class="slds-p-around_medium">
+    <lightning-card title={selectedLabel} class="slds-p-around_medium">
         <template if:false={isLoaded}>
             <lightning-combobox label="Select Quiz" value={selectedQuizId} options={quizOptions} onchange={handleQuizChange} placeholder="Select Quiz to start"></lightning-combobox>
             <template if:true={showStartButton}>
@@ -9,7 +9,7 @@
         <template if:true={isLoaded}>
             <template if:true={currentQuestion}>
                 <div class="slds-m-bottom_medium">
-                    <p class="slds-text-heading_medium">{currentQuestion.Question_Text__c}</p>
+                    <lightning-formatted-rich-text value={currentQuestion.Question_Text__c}></lightning-formatted-rich-text>
                 </div>
 
                 <template if:true={isMultipleChoice}>
@@ -48,10 +48,10 @@
                 </template>
 
                 <template if:true={feedback}>
+                    <lightning-button label="Next Question" onclick={nextQuestion} class="slds-m-top_medium"></lightning-button>
                     <div class="slds-m-top_medium slds-text-heading_small">
                         {feedback}
                     </div>
-                    <lightning-button label="Next Question" onclick={nextQuestion} class="slds-m-top_medium"></lightning-button>
                 </template>
             </template>
 

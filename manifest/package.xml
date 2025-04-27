@@ -18,6 +18,7 @@
         <members>Quiz_Record_Page</members>
         <members>Quiz_Question_Record_Page</members>
         <members>Personal_UtilityBar</members>
+        <members>Home_Page_Default</members>
         <name>FlexiPage</name>
     </types>
     <types>
