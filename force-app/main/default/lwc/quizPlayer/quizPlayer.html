@@ -4,36 +4,38 @@
             <template if:false={isLoaded}>
                 <lightning-combobox label="Select Quiz" value={selectedQuizId} options={quizOptions} onchange={handleQuizChange} placeholder="Select Quiz to start"></lightning-combobox><br>
                 <template if:true={showStartButton}>
-                    <div class="slds-form-element">
-                        <label class="slds-checkbox_toggle slds-grid">
-                            <span class="slds-form-element__label slds-m-bottom_none">Randomize Questions?</span>
-                            <input type="checkbox"
-                                   onchange={handleRandomizeQuestionsToggle}
-                                   checked={randomizeQuestions}
-                                   name="randomize-questions-toggle"
-                                   aria-describedby="randomize-questions-toggle" />
-                            <span id="randomize-questions-toggle" class="slds-checkbox_faux_container" aria-live="assertive">
-                                <span class="slds-checkbox_faux"></span>
-                                <span class="slds-checkbox_on">Enabled</span>
-                                <span class="slds-checkbox_off">Disabled</span>
-                            </span>
-                        </label>
-                    </div>
-                    <br>
-                    <div class="slds-form-element">
-                        <label class="slds-checkbox_toggle slds-grid">
-                            <span class="slds-form-element__label slds-m-bottom_none">Randomize Options?</span>
-                            <input type="checkbox"
-                                   onchange={handleRandomizeOptionsToggle}
-                                   checked={randomizeOptions}
-                                   name="randomize-options-toggle"
-                                   aria-describedby="randomize-options-toggle" />
-                            <span id="randomize-options-toggle" class="slds-checkbox_faux_container" aria-live="assertive">
-                                <span class="slds-checkbox_faux"></span>
-                                <span class="slds-checkbox_on">Enabled</span>
-                                <span class="slds-checkbox_off">Disabled</span>
-                            </span>
-                        </label>
+                    <div class="slds-grid slds-grid_align-start slds-wrap">
+                        <div class="slds-form-element slds-size_1-of-4 slds-p-right_xx-small">
+                            <label class="slds-checkbox_toggle slds-grid">
+                                <span class="slds-form-element__label slds-m-bottom_none">Randomize Questions?</span>
+                                <input type="checkbox"
+                                       onchange={handleRandomizeQuestionsToggle}
+                                       checked={randomizeQuestions}
+                                       name="randomize-questions-toggle"
+                                       aria-describedby="randomize-questions-toggle" />
+                                <span id="randomize-questions-toggle" class="slds-checkbox_faux_container" aria-live="assertive">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-checkbox_on">Enabled</span>
+                                    <span class="slds-checkbox_off">Disabled</span>
+                                </span>
+                            </label>
+                        </div>
+                    
+                        <div class="slds-form-element slds-size_1-of-4 slds-p-left_xx-small">
+                            <label class="slds-checkbox_toggle slds-grid">
+                                <span class="slds-form-element__label slds-m-bottom_none">Randomize Options?</span>
+                                <input type="checkbox"
+                                       onchange={handleRandomizeOptionsToggle}
+                                       checked={randomizeOptions}
+                                       name="randomize-options-toggle"
+                                       aria-describedby="randomize-options-toggle" />
+                                <span id="randomize-options-toggle" class="slds-checkbox_faux_container" aria-live="assertive">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-checkbox_on">Enabled</span>
+                                    <span class="slds-checkbox_off">Disabled</span>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                     <lightning-button label="Start Quiz" onclick={startQuiz} class="slds-m-top_medium"></lightning-button>
                 </template>
@@ -41,6 +43,7 @@
             <template if:true={isLoaded}>
                 <template if:true={currentQuestion}>
                     <div class="slds-m-top_small">Question {currentQuestionCount} of {questions.length}</div>
+                    <br>
                     <div class="slds-m-bottom_medium">
                         <lightning-formatted-rich-text value={currentQuestion.Question_Text__c}></lightning-formatted-rich-text>
                     </div>
