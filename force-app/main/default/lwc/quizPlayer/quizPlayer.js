@@ -11,18 +11,23 @@ export default class QuizPlayer extends LightningElement {
     @track submitted = false;
     @track score = 0;
     quizOptions = [];
+    shuffledOptions = [];
     selectedQuizId;
     isLoaded = false;
     randomizeQuestions = false;
+    randomizeOptions = false;
+    currentQuestion;
+    currentQuestionCount;
     error;
 
     @wire(getQuestions, { quizId: '$quizId' })
     wiredQuestions({ error, data }) {
         if (data) {
-            const shuffled = [...data];
-            if (this.randomizeQuestions) {this.shuffle(shuffled);}
+            let shuffled = [...data];
+            if (this.randomizeQuestions) {shuffled = this.shuffle(shuffled);}
             this.questions = shuffled;
             this.isLoaded = true;
+            this.initializeFirstQuestion(); 
         } else if (error) {
             this.error = error;
             console.error('Error loading quiz questions', error);
@@ -31,10 +36,6 @@ export default class QuizPlayer extends LightningElement {
 
     get showSubmitButton() {
         return !this.submitted;
-    }
-
-    get currentQuestion() {
-        return this.questions[this.currentIndex];
     }
 
     get isMultipleChoice() {
@@ -51,24 +52,7 @@ export default class QuizPlayer extends LightningElement {
     }
 
     get options() {
-        if (!this.currentQuestion) return [];
-        const opts = [];
-        if (this.currentQuestion.Option_1__c) {
-            opts.push({ label: this.currentQuestion.Option_1__c, value: '1' , key: this.currentQuestion.Id + '1', class: 'option-item'});
-        }
-        if (this.currentQuestion.Option_2__c) {
-            opts.push({ label: this.currentQuestion.Option_2__c, value: '2', key: this.currentQuestion.Id + '2', class: 'option-item' });
-        }
-        if (this.currentQuestion.Option_3__c) {
-            opts.push({ label: this.currentQuestion.Option_3__c, value: '3', key: this.currentQuestion.Id + '3', class: 'option-item'});
-        }
-        if (this.currentQuestion.Option_4__c) {
-            opts.push({ label: this.currentQuestion.Option_4__c, value: '4', key: this.currentQuestion.Id + '4', class: 'option-item'});
-        }
-        if (this.currentQuestion.Option_5__c) {
-            opts.push({ label: this.currentQuestion.Option_5__c, value: '5', key: this.currentQuestion.Id + '5', class: 'option-item'});
-        }
-        return opts;
+        return this.shuffledOptions || [];
     }
 
     get optionsWithStatus() {
@@ -125,8 +109,12 @@ export default class QuizPlayer extends LightningElement {
         }
     }
 
-    handleRandomizeToggle(event) {
+    handleRandomizeQuestionsToggle(event) {
         this.randomizeQuestions = event.target.checked;
+    }
+
+    handleRandomizeOptionsToggle(event) {
+        this.randomizeOptions = event.target.checked;
     }
 
     startQuiz() {
@@ -146,17 +134,69 @@ export default class QuizPlayer extends LightningElement {
         }
     }
 
+    initializeFirstQuestion() {
+        if (this.questions && this.questions.length > 0) {
+            this.currentIndex = 0;
+            this.currentQuestion = this.questions[this.currentIndex];
+    
+            this.selectedAnswers = [];
+            this.submitted = false;
+    
+            if (this.randomizeOptions) {
+                this.shuffledOptions = this.shuffle(this.generateOptions(this.currentQuestion));
+            } else {
+                this.shuffledOptions = this.generateOptions(this.currentQuestion);
+            }
+            this.currentQuestionCount = 1;
+        }
+    }
+
     nextQuestion() {
         this.feedback = '';
         this.selectedAnswers = [];
         this.submitted = false;
         this.currentIndex++;
+        this.currentQuestionCount++;
+    
+        if (this.currentIndex < this.questions.length) {
+            this.currentQuestion = this.questions[this.currentIndex];
+    
+            if (this.randomizeOptions) {
+                this.shuffledOptions = this.shuffle(this.generateOptions(this.currentQuestion));
+            } else {
+                this.shuffledOptions = this.generateOptions(this.currentQuestion);
+            }
+        } else {
+            this.currentQuestion = null;
+        }
     }
 
-    shuffle(questions) {
-        for (let i = questions.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [questions[i], questions[j]] = [questions[j], questions[i]];
+    generateOptions(question) {
+        const opts = [];
+        if (question.Option_1__c) {
+            opts.push({ label: question.Option_1__c, value: '1', key: question.Id + '1', class: 'option-item' });
         }
+        if (question.Option_2__c) {
+            opts.push({ label: question.Option_2__c, value: '2', key: question.Id + '2', class: 'option-item' });
+        }
+        if (question.Option_3__c) {
+            opts.push({ label: question.Option_3__c, value: '3', key: question.Id + '3', class: 'option-item' });
+        }
+        if (question.Option_4__c) {
+            opts.push({ label: question.Option_4__c, value: '4', key: question.Id + '4', class: 'option-item' });
+        }
+        if (question.Option_5__c) {
+            opts.push({ label: question.Option_5__c, value: '5', key: question.Id + '5', class: 'option-item' });
+        }
+        return opts;
+    }
+
+    shuffle(values) {
+        const arr = [...values]; // make a copy so original is not mutated
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
     }
 }
