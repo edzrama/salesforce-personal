@@ -85,7 +85,6 @@ export default class QuizPlayer extends LightningElement {
                 }));
             })
             .catch((error) => {
-                // Handle errors here
                 console.error('Error fetching quizzes:', error);
             });
     }
@@ -152,6 +151,12 @@ export default class QuizPlayer extends LightningElement {
     }
 
     nextQuestion() {
+        // Clear manually in the DOM
+        const inputs = this.template.querySelectorAll('lightning-input');
+        inputs.forEach(input => {
+            input.checked = false;
+        });
+
         this.feedback = '';
         this.selectedAnswers = [];
         this.submitted = false;
@@ -173,26 +178,27 @@ export default class QuizPlayer extends LightningElement {
 
     generateOptions(question) {
         const opts = [];
-        if (question.Option_1__c) {
-            opts.push({ label: question.Option_1__c, value: '1', key: question.Id + '1', class: 'option-item' });
+    
+        function buildOption(label, value) {
+            return {
+                label,
+                value,
+                key: question.Id + value,
+                class: 'option-item'
+            };
         }
-        if (question.Option_2__c) {
-            opts.push({ label: question.Option_2__c, value: '2', key: question.Id + '2', class: 'option-item' });
-        }
-        if (question.Option_3__c) {
-            opts.push({ label: question.Option_3__c, value: '3', key: question.Id + '3', class: 'option-item' });
-        }
-        if (question.Option_4__c) {
-            opts.push({ label: question.Option_4__c, value: '4', key: question.Id + '4', class: 'option-item' });
-        }
-        if (question.Option_5__c) {
-            opts.push({ label: question.Option_5__c, value: '5', key: question.Id + '5', class: 'option-item' });
-        }
+    
+        if (question.Option_1__c) opts.push(buildOption(question.Option_1__c, '1'));
+        if (question.Option_2__c) opts.push(buildOption(question.Option_2__c, '2'));
+        if (question.Option_3__c) opts.push(buildOption(question.Option_3__c, '3'));
+        if (question.Option_4__c) opts.push(buildOption(question.Option_4__c, '4'));
+        if (question.Option_5__c) opts.push(buildOption(question.Option_5__c, '5'));
+    
         return opts;
     }
 
     shuffle(values) {
-        const arr = [...values]; // make a copy so original is not mutated
+        const arr = [...values];
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [arr[i], arr[j]] = [arr[j], arr[i]];

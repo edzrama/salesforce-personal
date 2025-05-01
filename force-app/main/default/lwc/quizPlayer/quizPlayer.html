@@ -69,7 +69,7 @@
                                 <div key={option.value} class={option.class}>
                                     <lightning-input
                                         type="radio"
-                                        name="radioGroup"
+                                        name={currentQuestion.Id} 
                                         label={option.label}
                                         value={option.value}
                                         onchange={handleSelection}>
