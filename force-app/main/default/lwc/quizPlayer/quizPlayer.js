@@ -120,6 +120,10 @@ export default class QuizPlayer extends LightningElement {
         this.quizId = this.selectedQuizId;
     }
     submitAnswer() {
+        if (this.selectedAnswers.length === 0) {
+            this.feedback = '⚠️ Please select an answer before submitting.';
+            return;
+        }
         const correctAnswers = this.currentQuestion.Correct_Answers__c.split(';').sort();
         const userAnswers = [...this.selectedAnswers].sort();
 

@@ -84,7 +84,9 @@
                     </template>
     
                     <template if:true={feedback}>
-                        <lightning-button label="Next Question" onclick={nextQuestion} class="slds-m-top_medium"></lightning-button>
+                        <template if:true={submitted}>
+                            <lightning-button label="Next Question" onclick={nextQuestion} class="slds-m-top_medium"></lightning-button>
+                        </template>
                         <div class="slds-m-top_medium slds-text-heading_small">
                             {feedback}
                         </div>
