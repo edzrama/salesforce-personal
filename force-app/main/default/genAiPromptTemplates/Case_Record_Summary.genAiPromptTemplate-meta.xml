@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>nLw2gZE0bkmN00F5qFEfNnZ6JWEdubukmc+ix9hiGPs=_3</activeVersionIdentifier>
+    <developerName>Case_Record_Summary</developerName>
+    <masterLabel>Case Record Summary</masterLabel>
+    <relatedEntity>Case</relatedEntity>
+    <templateVersions>
+        <content>Create Case Summary with the following data:
+{!$Input:Case.CaseNumber}
+{!$Input:Case.Type}
+{!$Input:Case.Subject}
+{!$Input:Case.Status}
+{!$Input:Case.Priority}
+{!$RelatedList:Case.CaseComments.Records}
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Case</definition>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Case.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CaseComments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Case.CaseComments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>nLw2gZE0bkmN00F5qFEfNnZ6JWEdubukmc+ix9hiGPs=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>A record summary with the following data:
+{!$Input:Case.CaseNumber}
+{!$Input:Case.Type}
+{!$Input:Case.Subject}
+{!$Input:Case.Status}
+{!$Input:Case.Priority}
+{!$RelatedList:Case.CaseComments.Records}
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Case</definition>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Case.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CaseComments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Case.CaseComments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>nLw2gZE0bkmN00F5qFEfNnZ6JWEdubukmc+ix9hiGPs=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>A record summary with the following data:
+{!$Input:Case.Type}
+{!$Input:Case.Subject}
+{!$Input:Case.Status}
+{!$Input:Case.Priority}
+{!$RelatedList:Case.CaseComments.Records}
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Case</definition>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Case.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>CaseComments</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Case.CaseComments.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>nLw2gZE0bkmN00F5qFEfNnZ6JWEdubukmc+ix9hiGPs=_3</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__recordSummary</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

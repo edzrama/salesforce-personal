@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>nLw2gZE0bkmN00F5qFEfNnZ6JWEdubukmc+ix9hiGPs=_1</activeVersionIdentifier>
+    <developerName>Sales_Email_Template_for_Cases</developerName>
+    <masterLabel>Sales Email Template for Cases</masterLabel>
+    <relatedEntity>Contact</relatedEntity>
+    <templateVersions>
+        <content>Personalized email containing the following:
+{!$Input:Case.Subject}
+{!$Input:Case.Priority}
+{!$Input:Recipient.Name} as the recipient
+
+{!$Input:Sender.Name} as signature
+</content>
+        <inputs>
+            <apiName>Sender</apiName>
+            <definition>SOBJECT://User</definition>
+            <referenceName>Input:Sender</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Recipient</apiName>
+            <definition>SOBJECT://Contact</definition>
+            <referenceName>Input:Recipient</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>RelatedObject</apiName>
+            <definition>SOBJECT://Case</definition>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>nLw2gZE0bkmN00F5qFEfNnZ6JWEdubukmc+ix9hiGPs=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__salesEmail</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
