@@ -5,6 +5,10 @@
         <name>Flow</name>
     </types>
     <types>
+        <members>Account.Quick_Summary__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
         <members>*</members>
         <name>GenAiPromptTemplate</name>
     </types>
