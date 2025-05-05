@@ -1,0 +1,17 @@
+{
+  "required" : [ "contactFound" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactFound" : {
+      "title" : "contactFound",
+      "description" : "output of previous action",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Contact"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,14 @@
+{
+  "required" : [ "emailOrMemberId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "emailOrMemberId" : {
+      "title" : "emailOrMemberId",
+      "description" : "input from the end-user conversation",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
