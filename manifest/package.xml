@@ -17,6 +17,10 @@
         <name>GenAiPromptTemplate</name>
     </types>
     <types>
+        <members>Order_Creation</members>
+        <name>genAiPlugin</name>
+    </types>
+    <types>
       <members>Create_Order_with_Product</members>
       <members>Get_Product_List_Details</members>
       <members>Identify_Customer_By_Email_or_Member_Id</members>

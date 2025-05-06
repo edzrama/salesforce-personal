@@ -3,15 +3,8 @@
   "properties" : {
     "productCollection" : {
       "title" : "productCollection",
-      "description" : "contains collection of product including Name and description",
-      "maxItems" : 2000,
-      "items" : {
-        "lightning:type" : "lightning__recordInfoType",
-        "lightning:sObjectInfo" : {
-          "apiName" : "Product2"
-        }
-      },
-      "lightning:type" : "lightning__listType",
+      "description" : "contains collection of product including Id, Name and Product Code",
+      "lightning:type" : "lightning__textType",
       "lightning:isPII" : false,
       "copilotAction:isDisplayable" : true,
       "copilotAction:isUsedByPlanner" : true,

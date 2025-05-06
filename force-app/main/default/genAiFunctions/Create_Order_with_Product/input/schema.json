@@ -1,5 +1,5 @@
 {
-  "required" : [ "contactId", "productId", "productName", "quantity" ],
+  "required" : [ "contactId", "productName", "quantity" ],
   "unevaluatedProperties" : false,
   "properties" : {
     "contactId" : {
@@ -21,7 +21,7 @@
       "description" : "Product Name (Optional if Product ID is provided)",
       "lightning:type" : "lightning__textType",
       "lightning:isPII" : false,
-      "copilotAction:isUserInput" : false
+      "copilotAction:isUserInput" : true
     },
     "quantity" : {
       "title" : "quantity",

@@ -6,12 +6,19 @@
         <name>Assign_Products_found</name>
         <label>Assign Products found</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>242</locationY>
         <assignmentItems>
             <assignToReference>productCollection</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Product_List</elementReference>
+                <stringValue>[{Id: &apos;01tNS00000K7zjEYAR&apos;, Name: &apos;Installation: Industrial - High&apos;, ProductCode : &apos;IN7080&apos;}, {Id: &apos;01tNS00000K7zjFYAR&apos;, Name: &apos;SLA: Silver&apos;, ProductCode : &apos;SL9040&apos;}, {Id: &apos;01tNS00000K7zjGYAR&apos;, Name: &apos;GenWatt Propane 500kW&apos;, ProductCode : &apos;GC3040&apos;}, {Id: &apos;01tNS00000K7zjHYAR&apos;, Name: &apos;SLA: Platinum&apos;, ProductCode : &apos;SL9080&apos;}, {Id: &apos;01tNS00000K7zjIYAR&apos;, Name: &apos;GenWatt Propane 100kW&apos;, ProductCode : &apos;GC3020&apos;}, {Id: &apos;01tNS00000K7zjJYAR&apos;, Name: &apos;GenWatt Propane 1500kW&apos;, ProductCode : &apos;1500kW&apos;}]</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>contactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>contactFound.Id</elementReference>
             </value>
         </assignmentItems>
     </assignments>
@@ -32,7 +39,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Product_List</targetReference>
+                <targetReference>Assign_Products_found</targetReference>
             </connector>
             <label>Contact Exists?</label>
         </rules>
@@ -59,30 +66,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_Product_List</name>
-        <label>Get Product List</label>
-        <locationX>50</locationX>
-        <locationY>242</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Assign_Products_found</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>IsActive</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <limit>
-            <numberValue>4.0</numberValue>
-        </limit>
-        <object>Product2</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <start>
         <locationX>56</locationX>
         <locationY>0</locationY>
@@ -100,11 +83,17 @@
         <objectType>Contact</objectType>
     </variables>
     <variables>
-        <name>productCollection</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
+        <name>contactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>true</isOutput>
-        <objectType>Product2</objectType>
+    </variables>
+    <variables>
+        <name>productCollection</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>
