@@ -101,26 +101,35 @@ export default class SenatorialCandidatePicker extends LightningElement {
     // Function to get the comment for a selected candidate
     getComment(id) {
         let comment = '';
-        if (id === 11) {
-            comment = ' — Budots pa rin sa 2025.';
+        if (id === 5) {
+            comment = ' — 🤓🤓🤓';
+        } else if (id === 11) {
+            comment = ' — 🕺Budots pa rin sa 2025.';
         } else if (id === 22) {
-            comment = ' — Sure ka na dyan?';
+            comment = ' — 👊👊';
         } else if (id === 35) {
-            comment = ' — 🎬📽️🎞️';
-        } else if (id === 39) {
-            comment = ' — Team itim?';
+            comment = ' — 🎬📽️';
+        } else if (id === 49) {
+            comment = ' — ⚕️🧑🏻‍⚕️';
         } else if (id === 50) {
             comment = ' — 🥊💥';
         } else if (id === 53) {
-            comment = ` — OH, C'MON!`;
+            comment = ` — 🙎 OH, C'MON!`;
         } else if (id === 55) {
-            comment = ' — For REAL?';
+            comment = ' — 🤦 FOR REAL? ';
         } else if (id === 58) {
-            comment = ' — Ipe!!!';
+            comment = ' — 🎞️🎞️🎞️';
+        } else if (id === 62) {
+            comment = ' — 😎😎😎';
         } else if (id === 66) {
-            comment = ' — Camille--yahh';
+            comment = ' — Camille--yahh 🏘️🏡🚱';
         }
         return comment;
+    }
+
+    get pageClass() {
+        // Example: highlight if candidate #66 is selected
+        return this.selectedIds.has(59) ? 'highlighted-page' : 'default';
     }
     
     // Update the candidate's comment field

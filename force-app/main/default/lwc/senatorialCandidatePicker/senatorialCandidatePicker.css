@@ -12,15 +12,13 @@
     align-items: center;
 }
 
-/* Make the grid responsive on smaller screens */
-@media (max-width: 1024px) {
-    .candidate-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.highlighted-page {
+    background-color: rgba(0, 0, 0, 0.2); /* semi-transparent black */
+    transition: background-color 1s ease;
 }
 
-@media (max-width: 600px) {
-    .candidate-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.default {
+    background-color: white;
+    color: black;
+    transition: background-color 1s ease;
 }
