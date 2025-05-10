@@ -11,3 +11,16 @@
     display: flex;
     align-items: center;
 }
+
+/* Make the grid responsive on smaller screens */
+@media (max-width: 1024px) {
+    .candidate-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .candidate-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
