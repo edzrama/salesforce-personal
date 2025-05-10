@@ -104,7 +104,7 @@ export default class SenatorialCandidatePicker extends LightningElement {
         if (id === 11) {
             comment = ' — Budots pa rin sa 2025.';
         } else if (id === 22) {
-            comment = ' — sure ka na dyan?';
+            comment = ' — Sure ka na dyan?';
         } else if (id === 35) {
             comment = ' — 🎬📽️🎞️';
         } else if (id === 39) {
@@ -114,7 +114,7 @@ export default class SenatorialCandidatePicker extends LightningElement {
         } else if (id === 53) {
             comment = ` — OH, C'MON!`;
         } else if (id === 55) {
-            comment = ' — for real?';
+            comment = ' — For REAL?';
         } else if (id === 58) {
             comment = ' — Ipe!!!';
         } else if (id === 66) {
