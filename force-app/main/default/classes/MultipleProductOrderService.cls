@@ -2,7 +2,7 @@ public with sharing class MultipleProductOrderService {
     @InvocableMethod(label='Create Order with multiple Products' description='Creates an Order for the Contact\'s Account and adds the selected Products')
     public static List<OrderResponse> createOrder(List<OrderRequest> requests) {
         List<OrderResponse> responses = new List<OrderResponse>();
-
+        // makes sure to add profile access to this apex class for the agent
         // Get Standard Pricebook ID
         Id pricebookId;
         try {

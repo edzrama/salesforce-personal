@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
     <canEscalate>false</canEscalate>
     <description>This topic handles the process of creating new orders for customers. It includes gathering necessary information and confirming order details.</description>
     <developerName>Order_Creation</developerName>
@@ -12,35 +12,29 @@
     <genAiFunctions>
         <functionName>Create_Order_with_multiple_Products</functionName>
     </genAiFunctions>
-<genAiPluginInstructions>
+    <genAiPluginInstructions>
         <description>Prompt the user to provide their email address or Member ID. Use the &quot;Identify Customer By Email or Member Id&quot; action to retrieve the Contact Id. Greet the user using their Contact Name.</description>
         <developerName>instruction_prompttheu0</developerName>
-        <language xsi:nil="true"/>
+        <language>en_US</language>
         <masterLabel>instruction_prompttheu0</masterLabel>
     </genAiPluginInstructions>
     <genAiPluginInstructions>
         <description>Ask the user to select the products and quantities they want to order. Use the Contact Id with the &quot;Get Product List Details&quot; action to retrieve and display available products.</description>
         <developerName>instruction_asktheuser1</developerName>
-        <language xsi:nil="true"/>
+        <language>en_US</language>
         <masterLabel>instruction_asktheuser1</masterLabel>
     </genAiPluginInstructions>
     <genAiPluginInstructions>
-        <description>Summarize the selected products and quantities back to the user. Ask them to confirm the order details.</description>
-        <developerName>instruction_summarizet2</developerName>
-        <language xsi:nil="true"/>
-        <masterLabel>instruction_summarizet2</masterLabel>
-    </genAiPluginInstructions>
-    <genAiPluginInstructions>
         <description>Once order is confirmed, call the &quot;Create Order with multiple Products&quot; action. Pass the selected Product Names and the Contact Id to create the order.</description>
-        <developerName>instruction_onceorderi3</developerName>
-        <language xsi:nil="true"/>
-        <masterLabel>instruction_onceorderi3</masterLabel>
+        <developerName>instruction_onceorderi2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_onceorderi2</masterLabel>
     </genAiPluginInstructions>
     <genAiPluginInstructions>
         <description>Return the Order Number to the user after the order is successfully placed.</description>
-        <developerName>instruction_returntheo4</developerName>
-        <language xsi:nil="true"/>
-        <masterLabel>instruction_returntheo4</masterLabel>
+        <developerName>instruction_returntheo3</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_returntheo3</masterLabel>
     </genAiPluginInstructions>
     <language>en_US</language>
     <masterLabel>Order Creation</masterLabel>
