@@ -16,14 +16,57 @@ export default class SenatorialCandidatePicker extends LightningElement {
         window.addEventListener('resize', this.handleResize.bind(this));
         this.handleResize();
     }
+    renderedCallback() {
+        const containers = this.template.querySelectorAll('.hover-container');
     
-    get sortedCandidates() {
-        return [...this.candidates].sort((a, b) => a.ballotNumber - b.ballotNumber);
+        containers.forEach(container => {
+            const imageDiv = container.querySelector('.candidate-image');
+            const inputEl = container.querySelector('lightning-input');
+    
+            if (!imageDiv || !inputEl) return;
+    
+            container.addEventListener('mouseenter', () => {
+                const inputRect = inputEl.getBoundingClientRect();
+                const imgWidth = 768;
+                const imgHeight = 1024;
+                const margin = 10;
+    
+                let left = inputRect.right + margin;
+                let top = inputRect.top;
+    
+                // Adjust left if going off-screen
+                if (left + imgWidth > window.innerWidth) {
+                    left = inputRect.left - imgWidth - margin;
+                }
+    
+                // Adjust top if going off-screen
+                if (top + imgHeight > window.innerHeight) {
+                    top = window.innerHeight - imgHeight - margin;
+                }
+    
+                // Fallback top
+                if (top < 0) {
+                    top = 0;
+                }
+    
+                imageDiv.style.left = `${left}px`;
+                imageDiv.style.top = `${top}px`;
+            });
+    
+            container.addEventListener('mouseleave', () => {
+                imageDiv.style.left = '-9999px';
+                imageDiv.style.top = '-9999px';
+            });
+        });
     }
 
     // Clean up the event listener when the component is removed from the DOM
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
+    }
+
+    get sortedCandidates() {
+        return [...this.candidates].sort((a, b) => a.ballotNumber - b.ballotNumber);
     }
 
     get processedCandidates() {

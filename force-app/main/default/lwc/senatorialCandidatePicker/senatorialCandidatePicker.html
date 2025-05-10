@@ -11,12 +11,19 @@
                     <div key={column} class="candidate-column">
                         <template for:each={column} for:item="candidate">
                             <div key={candidate.ballotNumber} class="candidate-item slds-p-around_x-small">
-                                <lightning-input type="checkbox"
+                                <div class="hover-container">
+                                    <lightning-input type="checkbox"
                                                  label={candidate.label}
                                                  checked={candidate.checked}
                                                  onchange={handleCheckboxChange}
-                                                 data-id={candidate.ballotNumber}>
-                                </lightning-input>
+                                                 data-id={candidate.ballotNumber}
+                                                 disabled={candidate.withdrawn}>
+                                    </lightning-input>
+                                    <div class="candidate-image">
+                                        <img src={candidate.image} alt={candidate.label} />
+                                    </div>
+                                </div>
+                                
                             </div>
                         </template>
                     </div>

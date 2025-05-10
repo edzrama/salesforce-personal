@@ -8,5 +8,9 @@
 		<members>senatorialCandidates2025</members>
 		<name>StaticResource</name>
 	</types>
+    <types>
+        <members>*</members>
+        <name>CspTrustedSite</name>
+    </types>
     <version>63.0</version>
 </Package>

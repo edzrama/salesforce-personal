@@ -22,3 +22,24 @@
     color: black;
     transition: background-color 1s ease;
 }
+
+.hover-container {
+    position: relative;
+    display: inline-block;
+}
+
+.candidate-image {
+    display: none;
+    position: fixed;
+    width: 768px;
+    height: 1024px;
+    z-index: 1000;
+    pointer-events: none;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    background: #fff;
+}
+
+.hover-container:hover .candidate-image {
+    display: block;
+}
