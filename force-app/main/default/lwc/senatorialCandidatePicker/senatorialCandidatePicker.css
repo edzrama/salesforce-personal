@@ -1,0 +1,13 @@
+.candidate-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.candidate-column {
+    flex: 1; /* Each column will take equal width */
+}
+
+.candidate-item {
+    display: flex;
+    align-items: center;
+}
