@@ -1,6 +1,5 @@
 import { LightningElement, track } from 'lwc';
 import CANDIDATES from '@salesforce/resourceUrl/senatorialCandidates2025';
-import { loadScript } from 'lightning/platformResourceLoader';
 
 export default class SenatorialCandidatePicker extends LightningElement {
 
@@ -22,7 +21,7 @@ export default class SenatorialCandidatePicker extends LightningElement {
         return [...this.candidates].sort((a, b) => a.ballotNumber - b.ballotNumber);
     }
 
-    // Make sure to clean up the event listener when the component is removed from the DOM
+    // Clean up the event listener when the component is removed from the DOM
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
     }
@@ -40,7 +39,7 @@ export default class SenatorialCandidatePicker extends LightningElement {
     }
 
     get selectedCount() {
-        return this.selectedIds.size;  // Reactively gets the number of selected candidates
+        return this.selectedIds.size; 
     }
 
     get selectedCountLabel() {
@@ -103,13 +102,13 @@ export default class SenatorialCandidatePicker extends LightningElement {
     getComment(id) {
         let comment = '';
         if (id === 11) {
-            comment = ' — Budots yarn?';
+            comment = ' — Budots pa rin sa 2025.';
         } else if (id === 22) {
-            comment = ' — 🤔';
+            comment = ' — sure ka na dyan?';
         } else if (id === 35) {
             comment = ' — 🎬📽️🎞️';
         } else if (id === 39) {
-            comment = ' — Team itim ah...';
+            comment = ' — Team itim?';
         } else if (id === 50) {
             comment = ' — 🥊💥';
         } else if (id === 53) {
@@ -117,7 +116,7 @@ export default class SenatorialCandidatePicker extends LightningElement {
         } else if (id === 55) {
             comment = ' — for real?';
         } else if (id === 58) {
-            comment = ' — you okay?';
+            comment = ' — Ipe!!!';
         } else if (id === 66) {
             comment = ' — Camille--yahh';
         }
@@ -153,7 +152,7 @@ export default class SenatorialCandidatePicker extends LightningElement {
         // Create a link element to download the Blob as a text file
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'selected_candidates.txt';  // The name of the file to download
+        link.download = 'selected_senatorial_candidates.txt'; 
     
         // Trigger the download
         link.click();
