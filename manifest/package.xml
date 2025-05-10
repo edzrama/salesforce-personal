@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>MultipleProductOrderService</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
         <members>Case_Summary_Flow</members>
         <members>Get_Product_List_Details</members>
         <members>Identify_Customer_By_Email_or_Member_Id</members>
@@ -21,7 +25,7 @@
         <name>genAiPlugin</name>
     </types>
     <types>
-      <members>Create_Order_with_Product</members>
+      <members>Create_Order_with_multiple_Products</members>
       <members>Get_Product_List_Details</members>
       <members>Identify_Customer_By_Email_or_Member_Id</members>
       <name>GenAiFunction</name>

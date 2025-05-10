@@ -1,0 +1,25 @@
+{
+  "required" : [ "contactId", "products" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "Contact ID",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "products" : {
+      "title" : "products",
+      "description" : "List of Products and Quantities",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "@apexClassType/c__MultipleProductOrderService$ProductWrapper"
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

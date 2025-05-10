@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates an Order for the Contact&apos;s Account and adds the selected Products</description>
+    <invocationTarget>MultipleProductOrderService</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <masterLabel>Create Order with multiple Products</masterLabel>
+    <progressIndicatorMessage>Creating Order .....</progressIndicatorMessage>
+</GenAiFunction>

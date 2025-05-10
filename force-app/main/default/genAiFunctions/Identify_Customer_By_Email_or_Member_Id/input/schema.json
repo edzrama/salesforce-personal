@@ -4,7 +4,7 @@
   "properties" : {
     "emailOrMemberId" : {
       "title" : "emailOrMemberId",
-      "description" : "input from the end-user conversation",
+      "description" : "can be Email or Member Id",
       "lightning:type" : "lightning__textType",
       "lightning:isPII" : false,
       "copilotAction:isUserInput" : true
