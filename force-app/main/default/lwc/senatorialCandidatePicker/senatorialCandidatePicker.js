@@ -6,6 +6,8 @@ export default class SenatorialCandidatePicker extends LightningElement {
     @track candidates = [];
     @track selectedIds = new Set();
     columnSize = 14; 
+    imgWidth = 698;
+    imgHeight = 930;
 
     connectedCallback() {
         fetch(CANDIDATES)
@@ -27,21 +29,19 @@ export default class SenatorialCandidatePicker extends LightningElement {
     
             container.addEventListener('mouseenter', () => {
                 const inputRect = inputEl.getBoundingClientRect();
-                const imgWidth = 768;
-                const imgHeight = 1024;
                 const margin = 10;
     
                 let left = inputRect.right + margin;
                 let top = inputRect.top;
     
                 // Adjust left if going off-screen
-                if (left + imgWidth > window.innerWidth) {
-                    left = inputRect.left - imgWidth - margin;
+                if (left + this.imgWidth > window.innerWidth) {
+                    left = inputRect.left - this.imgWidth - margin;
                 }
     
                 // Adjust top if going off-screen
-                if (top + imgHeight > window.innerHeight) {
-                    top = window.innerHeight - imgHeight - margin;
+                if (top + this.imgHeight > window.innerHeight) {
+                    top = window.innerHeight - this.imgHeight - margin;
                 }
     
                 // Fallback top
@@ -65,6 +65,9 @@ export default class SenatorialCandidatePicker extends LightningElement {
         window.removeEventListener('resize', this.handleResize);
     }
 
+    get imgSize() {
+        return `width:${this.imgWidth}px; height${this.imgHeight}px;`;
+    }
     get sortedCandidates() {
         return [...this.candidates].sort((a, b) => a.ballotNumber - b.ballotNumber);
     }
@@ -101,12 +104,20 @@ export default class SenatorialCandidatePicker extends LightningElement {
         const width = window.innerWidth;
         if (width <= 480) {
             this.columnSize = 33;  // For very small screens, use 2 columns
+            this.imgWidth = 219;
+            this.imgHeight = 292;
         } else if (width <= 768) {
             this.columnSize = 22;  // For mobile devices, use 3 columns
+            this.imgWidth = 384;
+            this.imgHeight = 512;
         } else if (width <= 1024) {
             this.columnSize = 17;  // For tablets, use 4 columns
+            this.imgWidth = 512;
+            this.imgHeight = 682;
         } else {
             this.columnSize = 14;  // For large screens, use 5 columns
+            this.imgWidth = 698;
+            this.imgHeight = 930;
         }
     }
 

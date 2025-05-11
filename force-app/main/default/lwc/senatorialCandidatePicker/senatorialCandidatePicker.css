@@ -31,8 +31,6 @@
 .candidate-image {
     display: none;
     position: fixed;
-    width: 768px;
-    height: 1024px;
     z-index: 1000;
     pointer-events: none;
     border: 1px solid #ccc;
