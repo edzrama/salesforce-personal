@@ -11,7 +11,7 @@
             <assignToReference>productCollection</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>[{Id: &apos;01tNS00000K7zjEYAR&apos;, Name: &apos;Installation: Industrial - High&apos;, ProductCode : &apos;IN7080&apos;}, {Id: &apos;01tNS00000K7zjFYAR&apos;, Name: &apos;SLA: Silver&apos;, ProductCode : &apos;SL9040&apos;}, {Id: &apos;01tNS00000K7zjGYAR&apos;, Name: &apos;GenWatt Propane 500kW&apos;, ProductCode : &apos;GC3040&apos;}, {Id: &apos;01tNS00000K7zjHYAR&apos;, Name: &apos;SLA: Platinum&apos;, ProductCode : &apos;SL9080&apos;}, {Id: &apos;01tNS00000K7zjIYAR&apos;, Name: &apos;GenWatt Propane 100kW&apos;, ProductCode : &apos;GC3020&apos;}, {Id: &apos;01tNS00000K7zjJYAR&apos;, Name: &apos;GenWatt Propane 1500kW&apos;, ProductCode : &apos;1500kW&apos;}]</stringValue>
+                <stringValue>[{ Name: &apos;Installation: Industrial - High&apos;, ProductCode : &apos;IN7080&apos;}, {Name: &apos;SLA: Silver&apos;, ProductCode : &apos;SL9040&apos;}, { Name: &apos;GenWatt Propane 500kW&apos;, ProductCode : &apos;GC3040&apos;}, { Name: &apos;SLA: Platinum&apos;, ProductCode : &apos;SL9080&apos;}, { Name: &apos;GenWatt Propane 100kW&apos;, ProductCode : &apos;GC3020&apos;}, {Name: &apos;GenWatt Propane 1500kW&apos;, ProductCode : &apos;1500kW&apos;}]</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
