@@ -25,10 +25,10 @@
         <masterLabel>instruction_asktheuser1</masterLabel>
     </genAiPluginInstructions>
     <genAiPluginInstructions>
-        <description>Once order is confirmed, call the &quot;Create Order with multiple Products&quot; action. Pass the selected Product Names and the Contact Id to create the order.</description>
-        <developerName>instruction_onceorderi2</developerName>
+        <description>Display the selected product and Quantity to the user and ask for confirmation before executing the next action. If the user declined or wanted to revise the order, display available products again. Otherwise, Once order is confirmed, call the &apos;Create Order with multiple Products&apos; action. Pass the selected Product Names and the Contact Id to create the order.</description>
+        <developerName>instruction_displaythe2</developerName>
         <language>en_US</language>
-        <masterLabel>instruction_onceorderi2</masterLabel>
+        <masterLabel>instruction_displaythe2</masterLabel>
     </genAiPluginInstructions>
     <genAiPluginInstructions>
         <description>Return the Order Number to the user after the order is successfully placed.</description>
