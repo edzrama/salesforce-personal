@@ -6,5 +6,5 @@
     <isConfirmationRequired>false</isConfirmationRequired>
     <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
     <masterLabel>Get Product List Details</masterLabel>
-    <progressIndicatorMessage>Validating.....</progressIndicatorMessage>
+    <progressIndicatorMessage>validating....</progressIndicatorMessage>
 </GenAiFunction>

@@ -1,6 +1,15 @@
 {
   "unevaluatedProperties" : false,
   "properties" : {
+    "contactId" : {
+      "title" : "contactId",
+      "description" : "contains contact id",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
     "productCollection" : {
       "title" : "productCollection",
       "description" : "contains collection of product including Id, Name and Product Code",
