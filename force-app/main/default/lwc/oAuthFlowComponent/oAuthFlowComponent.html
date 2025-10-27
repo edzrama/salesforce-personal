@@ -1,0 +1,29 @@
+<template>
+    <!-- Brand variant: Identifies the primary action in a group of buttons -->
+    <template if:true={showAuth}>
+        <lightning-button variant="brand" label="Authorize" title="Authorize" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    </template>
+
+    <template if:false={showAuth}>
+        <lightning-button variant="brand" label="Authorize" title="Authorize" onclick={handleClick} class="slds-m-left_x-small" disabled></lightning-button>
+
+        <template if:false={accessToken}>
+            <lightning-button variant="brand" label="Get Access Token" title="GetAccessToken" onclick={handleClickAccess} class="slds-m-left_x-small"></lightning-button>
+            <template if:true={showError}>
+                <p>Error - {showError}</p>
+                <p>Error Desc - {errorMessage}</p>
+            </template>
+        </template>
+
+        <template if:true={accessToken}>
+            <lightning-button variant="brand" label="Get Access Token" title="GetAccessToken" onclick={handleClickAccess} class="slds-m-left_x-small" disabled></lightning-button>
+            <p>Current Access Token - {showAccessToken}</p>
+            <br/><br/>
+            <lightning-input class="inputCmp" type="text" label="Enter Account Name"></lightning-input>
+            <lightning-button variant="brand" label="Create Account" title="Primary action" onclick={handleAccountCreation} class="slds-m-left_x-small"></lightning-button>
+            <template if:true={createdAccount}>
+                <p>Newly created Account Id in the other org - {createdAccount}</p>
+            </template>
+        </template>
+    </template>
+</template>
